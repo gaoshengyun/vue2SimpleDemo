@@ -1,7 +1,26 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div id="app" class="app-container">
+    <mt-header fixed title="固定在顶部"></mt-header>
     <router-view/>
+
+    <nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-chat">
+				<span class="mui-icon icon-huiyuan"><span class="mui-badge">9</span></span>
+				<span class="mui-tab-label">会员</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact">
+				<span class="mui-icon icon-gouwuche"></span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map">
+				<span class="mui-icon mui-icon-search"></span>
+				<span class="mui-tab-label">查找</span>
+			</a>
+		</nav>
   </div>
 </template>
 
@@ -11,13 +30,10 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scope>
+.app-container{
+  padding-top: 40px;
+  overflow-x: hidden;
+  padding-bottom: 50px;
 }
 </style>

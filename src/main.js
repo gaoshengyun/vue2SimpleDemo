@@ -19,7 +19,8 @@ import './static/vendor/mui/dist/css/mui.css'
 //引入axios
 import Axios from 'axios'
 //挂载原型
-Vue.prototype.$ajax = Axios
+Vue.prototype.axios = Axios
+Vue.prototype.axios.defaults.baseURL = ' https://www.easy-mock.com/mock/5c78cca3d8ddc93ba50ca103/mockdata/'
 
 /* eslint-disable no-new */
 new Vue({

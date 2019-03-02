@@ -17,5 +17,6 @@ export default new Router({
       name:'home',
       component:Home
     }
-  ]
+  ],
+  linkActiveClass:'mui-active'  //默认的类叫router-link-active
 })

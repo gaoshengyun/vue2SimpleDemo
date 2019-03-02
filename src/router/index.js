@@ -1,21 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/home/home'
+import HomeContainer from '@/components/tabbar/HomeContainer'
+import MemberContainer from '@/components/tabbar/MemberContainer'
+import ShopcarContainer from '@/components/tabbar/ShopcarContainer'
+import SearchContainer from '@/components/tabbar/SearchContainer'
+
+
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      redirect:{
-        name:'home'
-      }
-    },
+      path:'/',
+      redirect:'/home'
+    }
+    ,
     {
       path:'/home',
-      name:'home',
-      component:Home
+      component:HomeContainer
+    },
+    {
+      path:'/member',
+      component:MemberContainer
+    },
+    {
+      path:'/shopcar',
+      component:ShopcarContainer
+    },
+    {
+      path:'/search',
+      component:SearchContainer
     }
   ],
   linkActiveClass:'mui-active'  //默认的类叫router-link-active

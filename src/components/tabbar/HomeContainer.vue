@@ -13,8 +13,10 @@
     <!-- 六宫格 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-4">
-          <img src="../../static/img/news.png" alt="">
-          <div class="mui-media-body">新闻资讯</div>
+          <router-link to="/home/newslist">
+            <img src="../../static/img/news.png" alt="">
+            <div class="mui-media-body">新闻资讯</div>
+          </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-4"><a href="#">
           <img src="../../static/img/picShare.png" alt="">

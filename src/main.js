@@ -15,12 +15,21 @@ Vue.use(Mint)
 //引入mui的css
 import './static/vendor/mui/dist/css/mui.css'
 
+//引入moment
+import moment from 'moment'
+
 
 //引入axios
 import Axios from 'axios'
 //挂载原型
 Vue.prototype.axios = Axios
 Vue.prototype.axios.defaults.baseURL = ' https://www.easy-mock.com/mock/5c78cca3d8ddc93ba50ca103/mockdata/'
+
+//全局过滤器
+Vue.filter('dataFormat',function(dataStr, pattern = 'YYYY-MM-DD HH:mm:ss'){
+  return moment(dataStr).format(pattern)
+})
+
 
 /* eslint-disable no-new */
 new Vue({

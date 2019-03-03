@@ -18,7 +18,7 @@
         <div class="cmt-body">二十四桥明月夜,玉人何处教吹箫(莫名脸红)</div>
       </div>
     </div>
-    <mt-button type="danger" size="large" plain>加载更多</mt-button>
+    <mt-button type="danger" size="large" plain @click="getMore">加载更多</mt-button>
   </div>
 </template>
 <script>
@@ -32,9 +32,12 @@ export default {
     this.getComments()
   },
   methods:{
-    getComments() {
+    getComments() { //获取评论
       // ...略,懒得写接口了
       //alert(this.id)
+    },
+    getMore(){  //获取更多
+      //...略,懒得写了  
     }
   },
   props:["id"]

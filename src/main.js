@@ -25,6 +25,10 @@ import Axios from 'axios'
 Vue.prototype.axios = Axios
 Vue.prototype.axios.defaults.baseURL = ' https://www.easy-mock.com/mock/5c78cca3d8ddc93ba50ca103/mockdata/'
 
+//引入vue-preview
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+
 //全局过滤器
 Vue.filter('dataFormat',function(dataStr, pattern = 'YYYY-MM-DD HH:mm:ss'){
   return moment(dataStr).format(pattern)

@@ -1,54 +1,48 @@
 <template>
   <div class="goodlist">
-    <div class="gooditem">
-      <img src="//img14.360buyimg.com/mobilecms/s316x316_jfs/t1/2097/27/6065/40109/5ba1cf7dE891db317/a8a31ccc3c16b875.jpg" alt="">
-      <h1 class="title">飞利浦电动牙刷钻石智能型 牙刷蓝牙版</h1>
+    <div class="gooditem" v-for="(item, index) in goodsList" :key="item.id">
+      <img :src="item.img_url" alt="">
+      <h1 class="title">{{item.title}}</h1>
       <div class="goodsinfo">
         <p class="price">
-          <span class="now">&yen; 2399</span>
-          <span class="old">&yen; 2599</span>
+          <span class="now">&yen; {{item.sell_price}}</span>
+          <span class="old">&yen; {{item.market_price}}</span>
         </p>
         <p class="sell">
           <span>热卖中</span>
-          <span>剩60件</span>
+          <span>剩{{item.stock_quantity}}件</span>
         </p>
       </div>
     </div>
 
-    <div class="gooditem">
-      <img src="//img14.360buyimg.com/mobilecms/s316x316_jfs/t1/2097/27/6065/40109/5ba1cf7dE891db317/a8a31ccc3c16b875.jpg" alt="">
-      <h1 class="title">飞利浦电动牙刷钻石智能型 充电式声波震动牙刷蓝牙版</h1>
-      <div class="goodsinfo">
-        <p class="price">
-          <span class="now">&yen; 2399</span>
-          <span class="old">&yen; 2599</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="gooditem">
-      <img src="//img14.360buyimg.com/mobilecms/s316x316_jfs/t1/2097/27/6065/40109/5ba1cf7dE891db317/a8a31ccc3c16b875.jpg" alt="">
-      <h1 class="title">飞利浦（PHILIPS）电动牙刷钻石智能型 充电式声波震动牙刷蓝牙版</h1>
-      <div class="goodsinfo">
-        <p class="price">
-          <span class="now">&yen; 2399</span>
-          <span class="old">&yen; 2599</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
+    <mt-button type="danger" size="large" @click="getMore()">加载更多</mt-button>
   </div>
 </template>
 <script>
 export default {
-  
+  data() {
+    return {
+      pageindex:1,
+      goodsList: []
+    }
+  },
+  created() {
+    this.getGoodList()
+  },
+  methods:{
+    getGoodList(){  //获取商品列表
+      this.axios.get('/api/getgoodlist/'+this.pageindex).then((result)=>{
+        //alert(1)
+        if(result.status === 200){
+          this.goodsList = this.goodsList.concat( result.data.message )
+        }
+      })
+    },
+    getMore(){
+      this.pageindex++
+      this.getGoodList()
+    }
+  }
 }
 </script>
 <style>

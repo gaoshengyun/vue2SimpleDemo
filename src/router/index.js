@@ -7,7 +7,8 @@ import SearchContainer from '@/components/tabbar/SearchContainer'
 import NewsList from '@/components/news/NewsList'
 import NewsInfo from '@/components/news/NewsInfo'
 import PhotoList from '@/components/photos/PhotoList'
-import PhotoInfo from '@/components/photos/PhotoInfo/'
+import PhotoInfo from '@/components/photos/PhotoInfo'
+import GoodList from '@/components/goods/GoodList'
 
 
 
@@ -51,6 +52,10 @@ export default new Router({
     {
       path:'/home/photoinfo/:id',
       component:PhotoInfo
+    },
+    {
+      path:'/home/goodslist',
+      component:GoodList
     }
   ],
   linkActiveClass:'mui-active'  //默认的类叫router-link-active

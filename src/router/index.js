@@ -9,6 +9,7 @@ import NewsInfo from '@/components/news/NewsInfo'
 import PhotoList from '@/components/photos/PhotoList'
 import PhotoInfo from '@/components/photos/PhotoInfo'
 import GoodList from '@/components/goods/GoodList'
+import GoodsInfo from '@/components/goods/GoodsInfo'
 
 
 
@@ -56,6 +57,10 @@ export default new Router({
     {
       path:'/home/goodslist',
       component:GoodList
+    },
+    {
+      path:'/home/goodsinfo/:id',
+      component:GoodsInfo
     }
   ],
   linkActiveClass:'mui-active'  //默认的类叫router-link-active

@@ -23,7 +23,7 @@ import moment from 'moment'
 import Axios from 'axios'
 //挂载原型
 Vue.prototype.axios = Axios
-Vue.prototype.axios.defaults.baseURL = ' https://www.easy-mock.com/mock/5c78cca3d8ddc93ba50ca103/mockdata/'
+Vue.prototype.axios.defaults.baseURL = ' https://www.easy-mock.com/mock/5c78cca3d8ddc93ba50ca103/mockdata'
 
 //引入vue-preview
 import VuePreview from 'vue-preview'

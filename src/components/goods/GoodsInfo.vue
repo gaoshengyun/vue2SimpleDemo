@@ -1,6 +1,9 @@
 <template>
   <div class="goodsInfoContent">
     <!-- 商品轮播图 -->
+
+    <swiper :lunboList="lunbotu"></swiper>
+
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -31,6 +34,7 @@
   </div>
 </template>
 <script>
+import swiper from '../subcomponent/swpier'
 export default {
   data() {
     return {
@@ -51,6 +55,9 @@ export default {
       })
     }
   },
+  components:{
+    swiper
+  }
 }
 </script>
 <style>

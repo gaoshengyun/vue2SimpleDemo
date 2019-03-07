@@ -1,13 +1,7 @@
 <template>
   <div>
     <!-- =============轮播图========== -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="(item, index) in lunboList" :key="index">
-        <a :href="item.url">
-          <img :src="item.imgsrc" alt>
-        </a>
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiper :lunboList="lunboList"></swiper>
     <!-- ==============轮播图============ -->
 
     <!-- 六宫格 -->
@@ -45,7 +39,9 @@
   </div>
 </template>
 <script>
-import { Toast } from "mint-ui";
+import { Toast } from "mint-ui"
+import swiper from '../subcomponent/swpier'
+
 export default {
   data() {
     return {
@@ -57,27 +53,24 @@ export default {
   },
   methods: {
     getLunbotu() {
-      this.axios.get("api/getlunbo").then(result => {
+      this.axios.get("/api/getlunbo").then(result => {
         if (result.status === 200) {
           this.lunboList = result.data.data;
-          //console.log(result.data.data)
+          
         } else {
           Toast("加载轮播图失败");
         }
       });
     }
+  },
+  components:{
+    swiper
   }
 };
 </script>
 <style >
 body{background-color: #fff;}
-.mint-swipe {
-  height: 200px;
-}
 
-.mint-swipe-item img {
-  width: 100%;
-}
 
 .mui-grid-view.mui-grid-9{
   background-color: #fff;

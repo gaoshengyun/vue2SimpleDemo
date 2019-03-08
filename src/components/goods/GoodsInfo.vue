@@ -33,8 +33,8 @@
         </div>
       </div>
       <div class="mui-card-footer">
-        <mt-button type="primary" size="large" plain>图文介绍</mt-button>
-        <mt-button type="danger" size="large" plain>商品评论</mt-button>
+        <mt-button type="primary" size="large" plain @click="goDesc(id)">图文介绍</mt-button>
+        <mt-button type="danger" size="large" plain @click="goComment(id)">商品评论</mt-button>
       </div>
     </div>
 
@@ -70,6 +70,13 @@ export default {
           console.log(result.data.message)
         }
       })
+    },
+    goDesc(id){
+      //alert(1)
+      this.$router.push({name:'goodsdesc',params:{id}})
+    },
+    goComment(id){
+      this.$router.push({name:'goodscomment',params:{id}})
     }
   },
   components:{

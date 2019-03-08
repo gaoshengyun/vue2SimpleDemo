@@ -6,11 +6,11 @@
 
     <!-- 商品购买 -->
     <div class="mui-card">
-      <div class="mui-card-header">商品名称</div>
+      <div class="mui-card-header">{{goodsInfo.title}}</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
           <p class="priec">
-            市场价:<del>&yen;2399</del>&nbsp;&nbsp;销售价: <span class="nowprice">&yen;5555</span>
+            市场价:<del>&yen;{{goodsInfo.marketprice}}</del>&nbsp;&nbsp;销售价: <span class="nowprice">&yen;{{goodsInfo.sell_price}}</span>
           </p>
           <p>购买数量 <numbox></numbox></p>
           <p>
@@ -27,9 +27,9 @@
       <div class="mui-card-header">商品参数</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <p>商品货号:</p>
-          <p>货存情况:</p>
-          <p>上架时间:</p>
+          <p>商品货号:{{goodsInfo.goods_no}}</p>
+          <p>货存情况:{{goodsInfo.stock_quantity}}</p>
+          <p>上架时间:{{goodsInfo.add_time}}</p>
         </div>
       </div>
       <div class="mui-card-footer">
@@ -47,17 +47,27 @@ export default {
   data() {
     return {
       id:this.$route.params.id,
-      lunbotu:[]
+      lunbotu:[],
+      goodsInfo:{}
     }
   },
   created() {
-    this.getLunbo()
+    this.getLunbo(),
+    this.getGoodsInfo()
   },
   methods: {
     getLunbo(){
       this.axios.get('/api/getthumimages/'+this.id).then((result) => {
         if (result.status === 200) {
           this.lunbotu = result.data.message
+        }
+      })
+    },
+    getGoodsInfo(){
+      this.axios.get('/api/goods/getinfo/'+this.id).then(result => {
+        if (result.status === 200) {
+          this.goodsInfo = result.data.message[0]
+          console.log(result.data.message)
         }
       })
     }

@@ -5,7 +5,7 @@
       @enter="enter" 
       @after-enter="afterEnher"
     >
-      <div class="ball" v-show="ballFlag"></div>
+      <div class="ball" v-show="ballFlag" ref="ball"></div>
     </transition>
     
     <!-- 商品轮播图 -->
@@ -94,9 +94,16 @@ export default {
       el.style.transform = 'translate(0,0)'
     },
     enter(el,done){
-      console.log(el)
       el.offsetWidth
-      el.style.transform = 'translate(93px,230px)'
+
+      //获取小球在页面中的位置
+      const ballPosition = this.$refs.ball.getBoundingClientRect();
+      //获取购物车徽标在页面中的位置
+      const badgePosition = document.getElementById('badge').getBoundingClientRect()
+      const xDist = badgePosition.left - ballPosition.left
+      const yDist = badgePosition.top - ballPosition.top
+
+      el.style.transform = `translate(${xDist}px,${yDist}px)`
       el.style.transition = 'all 1s cubic-bezier(.42,-0.4,1,.49)'
       done()
     },

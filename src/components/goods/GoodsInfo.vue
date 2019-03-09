@@ -1,5 +1,13 @@
 <template>
   <div class="goodsInfoContent">
+    <transition 
+      @before-enter="beforeEnter" 
+      @enter="enter" 
+      @after-enter="afterEnher"
+    >
+      <div class="ball" v-show="ballFlag"></div>
+    </transition>
+    
     <!-- 商品轮播图 -->
 
     <swiper :lunboList="lunbotu"></swiper>
@@ -15,7 +23,7 @@
           <p>购买数量 <numbox></numbox></p>
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
-            <mt-button type="danger" size="small">加入购物车</mt-button>
+            <mt-button type="danger" size="small" @click="addToShopcar">加入购物车</mt-button>
           </p>
         </div>
       </div>
@@ -48,7 +56,8 @@ export default {
     return {
       id:this.$route.params.id,
       lunbotu:[],
-      goodsInfo:{}
+      goodsInfo:{},
+      ballFlag:false  //控制小球是否显示的标识
     }
   },
   created() {
@@ -77,6 +86,22 @@ export default {
     },
     goComment(id){
       this.$router.push({name:'goodscomment',params:{id}})
+    },
+    addToShopcar(){
+      this.ballFlag = !this.ballFlag
+    },
+    beforeEnter(el){
+      el.style.transform = 'translate(0,0)'
+    },
+    enter(el,done){
+      console.log(el)
+      el.offsetWidth
+      el.style.transform = 'translate(93px,230px)'
+      el.style.transition = 'all 1s cubic-bezier(.42,-0.4,1,.49)'
+      done()
+    },
+    afterEnher(el){
+      this.ballFlag = !this.ballFlag
     }
   },
   components:{
@@ -99,5 +124,16 @@ export default {
 }
 .mui-card-footer button{
   margin: 15px 0;
+}
+.goodsInfoContent .ball{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #f00;
+  position: absolute;
+  z-index: 99;
+  left: 146px;
+  top: 390px;
+  
 }
 </style>

@@ -20,7 +20,7 @@
           <p class="priec">
             市场价:<del>&yen;{{goodsInfo.marketprice}}</del>&nbsp;&nbsp;销售价: <span class="nowprice">&yen;{{goodsInfo.sell_price}}</span>
           </p>
-          <p>购买数量 <numbox></numbox></p>
+          <p>购买数量 <numbox @getcount="getSelectedCount"></numbox></p>
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
             <mt-button type="danger" size="small" @click="addToShopcar">加入购物车</mt-button>
@@ -57,7 +57,8 @@ export default {
       id:this.$route.params.id,
       lunbotu:[],
       goodsInfo:{},
-      ballFlag:false  //控制小球是否显示的标识
+      ballFlag:false,  //控制小球是否显示的标识
+      selectedCount:1 //保存购买商品数量
     }
   },
   created() {
@@ -109,6 +110,10 @@ export default {
     },
     afterEnher(el){
       this.ballFlag = !this.ballFlag
+    },
+    getSelectedCount(count){
+      this.selectedCount = count
+      console.log('子组件传过来的值是:'+this.selectedCount)
     }
   },
   components:{

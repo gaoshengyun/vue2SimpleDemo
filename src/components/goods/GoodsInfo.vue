@@ -113,7 +113,7 @@ export default {
     },
     getSelectedCount(count){
       this.selectedCount = count
-      // console.log('子组件传过来的值是:'+this.selectedCount)
+      // console.log('子组件传过来的值是:'+this.selectedCount) 
     }
   },
   components:{

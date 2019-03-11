@@ -20,7 +20,7 @@
           <p class="priec">
             市场价:<del>&yen;{{goodsInfo.marketprice}}</del>&nbsp;&nbsp;销售价: <span class="nowprice">&yen;{{goodsInfo.sell_price}}</span>
           </p>
-          <p>购买数量 <numbox @getcount="getSelectedCount"></numbox></p>
+          <p>购买数量 <numbox @getcount="getSelectedCount" :max="goodsInfo.stock_quantity"></numbox></p>
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
             <mt-button type="danger" size="small" @click="addToShopcar">加入购物车</mt-button>
@@ -113,7 +113,7 @@ export default {
     },
     getSelectedCount(count){
       this.selectedCount = count
-      console.log('子组件传过来的值是:'+this.selectedCount)
+      // console.log('子组件传过来的值是:'+this.selectedCount)
     }
   },
   components:{

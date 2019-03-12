@@ -6,6 +6,11 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+//导入vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+var store = new Vuex.Store()
+
 //引入mint-ui
 import Mint from 'mint-ui'
 //安装插件,引入css
@@ -39,6 +44,7 @@ Vue.filter('dataFormat',function(dataStr, pattern = 'YYYY-MM-DD HH:mm:ss'){
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

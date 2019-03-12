@@ -90,6 +90,8 @@ export default {
     },
     addToShopcar(){
       this.ballFlag = !this.ballFlag
+      this.goodsInfo.count = this.selectedCount
+      this.$store.commit('addToShopcar',this.goodsInfo)
     },
     beforeEnter(el){
       el.style.transform = 'translate(0,0)'

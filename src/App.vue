@@ -14,7 +14,9 @@
 				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-item-repair" to="/shopcar">
-				<span class="mui-icon icon-gouwuche"><span class="mui-badge" id="badge">0</span></span>
+				<span class="mui-icon icon-gouwuche">
+          <span class="mui-badge" id="badge">{{$store.getters.getAllCount}}</span>
+        </span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item-repair" to="/search">

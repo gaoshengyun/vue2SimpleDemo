@@ -9,7 +9,43 @@ Vue.config.productionTip = false
 //导入vuex
 import Vuex from 'vuex'
 Vue.use(Vuex)
-var store = new Vuex.Store()
+var store = new Vuex.Store({
+  state:{
+    shopcar:[], //将购物车中商品的数据用一个数组存储起来
+  },
+  mutations:{
+    addToShopcar(state,goodsinfo){
+      var flag = false
+
+      state.shopcar.some(item => {
+        
+          item.count += parseInt(goodsinfo.count)
+          console.log(goodsinfo)
+          flag = true
+          return true
+        
+      })
+
+      if (!flag) {
+        state.shopcar.push(goodsinfo)
+      }
+
+      //保存在本地
+      localStorage.setItem('shopcar',stringify(state.shopcar))
+
+
+    }
+  },
+  getters:{
+    getAllCount(state){
+      var c = 0
+      state.shopcar.forEach(item => {
+        c += item.count
+      })
+      return c
+    }
+  }
+})
 
 //引入mint-ui
 import Mint from 'mint-ui'
@@ -32,6 +68,7 @@ Vue.prototype.axios.defaults.baseURL = ' https://www.easy-mock.com/mock/5c78cca3
 
 //引入vue-preview
 import VuePreview from 'vue-preview'
+import { stringify } from 'querystring';
 Vue.use(VuePreview)
 
 //全局过滤器
